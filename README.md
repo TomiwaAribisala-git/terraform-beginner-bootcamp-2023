@@ -52,16 +52,6 @@ Recommended for bash: '#!/usr/bin/env bash'
 
 [Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix))
 
-### Execution Considerations
-
-When executing the bash script we can use the './' shorthand notation to execute the bash script;
-
-eg. './bin/install-terraform-cli'
-
-If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
-
-eg. 'source ./bin/install-terraform-cli'
-
 ### Linux Permissions Contributions
 
 In order to make our bash scripts executable we need to change the linux permission for the file to be executable at user mode;
@@ -74,6 +64,17 @@ alternatively,
 ```
 chmod 744 ./bin/install-terraform-cli
 ```
+
+### Execution Considerations
+
+When executing the bash script we can use the './' shorthand notation to execute the bash script;
+
+eg. './bin/install-terraform-cli'
+
+If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
+
+eg. 'source ./bin/install-terraform-cli'
+
 
 ### Gitpod LifeCycle (Before, Init, Command)
 
@@ -126,3 +127,68 @@ gp env HELLO='world'
 All future workspaces launched will set the env vars for all bash terminals opened in those workspaces.
 
 You can also set env vars in the '.gitpod.yml' file but this can only contain non-sensitive env vars
+
+
+## AWS CLI Installation
+
+AWS CLI is installed for this project via the bash script [./bin/install-aws-cli](./bin/install-aws-cli)
+
+[AWS CLI Install Reference](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+[AWS Environment Variables Reference](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+We can check if our AWS credentials is configured correctly by running the following commands: 
+```
+aws sts get-caller-identity
+```
+
+### AWS Env Vars
+- Create an AWS account
+- Create an IAM User and create access keys for the User
+- Set AWS enviroment variables for bash; insert your access keys and desired region between the quotes
+```
+export AWS_ACCESS_KEY_ID=''
+export AWS_SECRET_ACCESS_KEY=''
+export AWS_DEFAULT_REGION=''
+```
+- Set AWS environment variables for Gitpod; insert your access keys and desired region between the quotes
+```
+gp env AWS_ACCESS_KEY_ID=''
+gp env AWS_SECRET_ACCESS_KEY=''
+gp env AWS_DEFAULT_REGION=''
+```
+
+### Linux Permissions Contributions
+
+In order to make our bash script executable we need to change the linux permission for the file to be executable at user mode;
+
+```
+chmod u+x ./bin/install-aws-cli
+```
+
+alternatively,
+```
+chmod 744 ./bin/install-aws-cli
+```
+
+### Execution Considerations
+
+When executing the bash script we can use the './' shorthand notation to execute the bash script;
+
+eg. './bin/install-aws-cli'
+
+If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
+
+eg. 'source ./bin/install-aws-cli'
+
+
+Check AWS Credentials using the `aws sts get-caller-identity` command; you should get a json payload details return below;
+```json
+{
+    "UserId": "xxxxxxxxxxxxxxxxxxxxx",
+    "Account": "xxxxxxxxxxxx",
+    "Arn": "arn:aws:iam::xxxxxxxxxxxx:user/terraform-beginner-bootcamp"
+}
+```
+
+
