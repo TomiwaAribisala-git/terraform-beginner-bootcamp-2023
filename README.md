@@ -50,7 +50,7 @@ A Shebang (pronounced sha-bang) tells the bash script which program will interpr
 
 Recommended for bash: '#!/usr/bin/env bash'
 
-[Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix)
+[Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix))
 
 ### Execution Considerations
 
