@@ -84,22 +84,22 @@ We need to be careful when using the Init command because it will not rerun if w
 
 ## Working Env Vars
 
-We can list out all Environment variables(Env Vars) using the 'env' command
+- We can list out all Environment variables(Env Vars) using the 'env' command
 
-We can filter specific env vars using grep eg. 'env | grep AWS'
+- We can filter specific env vars using grep eg. 'env | grep AWS'
 
 ### Setting and Unsetting Env Vars 
 
-In the terminal we can set using 'export HELLO='world''
+- In the terminal we can set using 'export HELLO='world''
 
-In the terminal we can unset using 'unset HELLO' 
+- In the terminal we can unset using 'unset HELLO' 
 
-We can set an env var temporarily when just running a command 
+- We can set an env var temporarily when just running a command 
 ```
 HELLO='world' ./bin/print_message
 ```
 
-Within a bash script we can set env without writing export eg
+- Within a bash script we can set env without writing export eg
 ```
 HELLO='world'
 
@@ -108,25 +108,25 @@ echo $HELLO
 
 ### Printing Vars
 
-We can print an env var using echo eg. 'echo $HELLO'
+- We can print an env var using echo eg. 'echo $HELLO'
 
 ### Scoping of Env Vars
 
-When you open up new bash terminals in VSCode it will not be aware of the env vars that you have set in another window.
+- When you open up new bash terminals in VSCode it will not be aware of the env vars that you have set in another window.
 
-If you want Env Vars to persist across all future bash terminals that are open, you need to set env vars in your bash profile. eg. '.bash_profile'
+- If you want Env Vars to persist across all future bash terminals that are open, you need to set env vars in your bash profile. eg. '.bash_profile'
 
 ### Persisting Env Vars in Gitpod
 
-We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
+- We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
 
 ```
 gp env HELLO='world'
 ```
 
-All future workspaces launched will set the env vars for all bash terminals opened in those workspaces.
+- All future workspaces launched will set the env vars for all bash terminals opened in those workspaces.
 
-You can also set env vars in the '.gitpod.yml' file but this can only contain non-sensitive env vars
+- You can also set env vars in the '.gitpod.yml' file but this can only contain non-sensitive env vars.
 
 
 ## AWS CLI Installation
@@ -173,16 +173,15 @@ chmod 744 ./bin/install-aws-cli
 
 ### Execution Considerations
 
-When executing the bash script we can use the './' shorthand notation to execute the bash script;
+- When executing the bash script we can use the './' shorthand notation to execute the bash script;
 
 eg. './bin/install-aws-cli'
 
-If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
+- If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
 
 eg. 'source ./bin/install-aws-cli'
 
-
-Check AWS Credentials using the `aws sts get-caller-identity` command; you should get a json payload details return below;
+- Check AWS Credentials using the `aws sts get-caller-identity` command; you should get a json payload details return below;
 ```json
 {
     "UserId": "xxxxxxxxxxxxxxxxxxxxx",
