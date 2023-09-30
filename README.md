@@ -48,7 +48,7 @@ The bash script is located here: [./bin/install-terraform-cli](./bin/install-ter
 ### Shebang
 - A Shebang (pronounced sha-bang) tells the bash script which program will interpret the script.
 
-- Recommended for bash: '#!/usr/bin/env bash'
+- Recommended for bash: `#!/usr/bin/env bash``
 
 - [Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix))
 
@@ -67,7 +67,7 @@ chmod 744 ./bin/install-terraform-cli
 
 ### Execution Considerations
 
-When executing the bash script we can use the './' shorthand notation to execute the bash script;
+When executing the bash script we can use the `./` shorthand notation to execute the bash script;
 
 eg. './bin/install-terraform-cli'
 
@@ -84,15 +84,15 @@ eg. 'source ./bin/install-terraform-cli'
 
 ## Working Env Vars
 
-- We can list out all Environment variables(Env Vars) using the 'env' command
+- We can list out all Environment variables(Env Vars) using the `env` command
 
-- We can filter specific env vars using grep eg. 'env | grep AWS'
+- We can filter specific env vars using grep eg. `env | grep AWS`
 
 ### Setting and Unsetting Env Vars 
 
-- In the terminal we can set using 'export HELLO='world''
+- In the terminal we can set using `export HELLO='world`
 
-- In the terminal we can unset using 'unset HELLO' 
+- In the terminal we can unset using `unset HELLO`
 
 - We can set an env var temporarily when just running a command 
 ```
@@ -108,13 +108,13 @@ echo $HELLO
 
 ### Printing Vars
 
-- We can print an env var using echo eg. 'echo $HELLO'
+- We can print an env var using echo eg. `echo $HELLO`
 
 ### Scoping of Env Vars
 
 - When you open up new bash terminals in VSCode it will not be aware of the env vars that you have set in another window.
 
-- If you want Env Vars to persist across all future bash terminals that are open, you need to set env vars in your bash profile. eg. '.bash_profile'
+- If you want Env Vars to persist across all future bash terminals that are open, you need to set env vars in your bash profile. eg. `.bash_profile`
 
 ### Persisting Env Vars in Gitpod
 
@@ -126,7 +126,7 @@ gp env HELLO='world'
 
 - All future workspaces launched will set the env vars for all bash terminals opened in those workspaces.
 
-- You can also set env vars in the '.gitpod.yml' file but this can only contain non-sensitive env vars.
+- You can also set env vars in the `.gitpod.yml` file but this can only contain non-sensitive env vars.
 
 
 ## AWS CLI Installation
@@ -173,7 +173,7 @@ chmod 744 ./bin/install-aws-cli
 
 ### Execution Considerations
 
-- When executing the bash script we can use the './' shorthand notation to execute the bash script;
+- When executing the bash script we can use the `./` shorthand notation to execute the bash script;
 
 eg. './bin/install-aws-cli'
 
@@ -190,4 +190,54 @@ eg. 'source ./bin/install-aws-cli'
 }
 ```
 
+## Terraform Basics 
 
+### Terraform Registry
+
+Terraform sources their providers and modules from the Terraform registry which is located at [registry.terraform.io](https://registry.terraform.io/)
+
+- **Providers** is an interface to APIs that will allow to create resources in terraform. 
+- **Modules** is an IAC structure to make terraform code modular, portable and shareable.
+
+[Terraform Providers]()
+[Terraform Modules]()
+
+### Terraform Console
+
+We can see a list of all Terraform commands by simply typing `terraform` via the CLI 
+
+#### Terraform Init 
+
+At the start of a new terraform project, we will run `terraform init` to download and initialize the binaries of the terraform providers we will use in this project. 
+
+#### Terraform Plan
+
+The `terraform plan` command will generate out a changeset i.e. plan, which is the state of our infrastructure and what will be changed. 
+
+#### Terraform Apply
+
+The `terraform apply` command will run a plan an pass the changeset to be executed, prompted by a yes/no option.
+
+If we want to automatically approve an apply, we can provide the auto approve flag eg. `terraform apply --auto-approve`.
+
+### Terraform Lock Files 
+
+`.terraform.lock.hcl` contains the locked versioning for the providers or modules that should be used with this project. 
+
+The Terraform Lock File should be committed to your Version Control(VSC) eg. Github, Gitlab. 
+
+### Terraform State Files
+
+`terraform.tfstate` contain information about the current state of your infrastructure.
+
+The State File contains sensitive data.
+
+If you lose this file, you lose knowwing the state of your infrastracture. 
+
+This file **should not be committed** to your Version Control System(VCS).
+
+`terraform.tfstate.backup` is the previous state file.
+
+### Terraform Directory
+
+`.terraform` directory contains binaries of terraform providers.
