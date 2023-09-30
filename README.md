@@ -46,11 +46,11 @@ The bash script is located here: [./bin/install-terraform-cli](./bin/install-ter
 - This will allow better portability for other projects that need to install the Terraform CLI.
 
 ### Shebang
-A Shebang (pronounced sha-bang) tells the bash script which program will interpret the script.
+- A Shebang (pronounced sha-bang) tells the bash script which program will interpret the script.
 
-Recommended for bash: '#!/usr/bin/env bash'
+- Recommended for bash: '#!/usr/bin/env bash'
 
-[Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix))
+- [Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix))
 
 ### Linux Permissions Contributions
 
@@ -78,9 +78,9 @@ eg. 'source ./bin/install-terraform-cli'
 
 ### Gitpod LifeCycle (Before, Init, Command)
 
-We need to be careful when using the Init command because it will not rerun if we restart an exisiting workspace
+- We need to be careful when using the Init command because it will not rerun if we restart an exisiting workspace
 
-[Gitpod LifeCycle Reference](https://www.gitpod.io/docs/configure/workspaces/tasks)
+- [Gitpod LifeCycle Reference](https://www.gitpod.io/docs/configure/workspaces/tasks)
 
 ## Working Env Vars
 
