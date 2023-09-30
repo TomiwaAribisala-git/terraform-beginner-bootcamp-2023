@@ -46,21 +46,11 @@ The bash script is located here: [./bin/install-terraform-cli](./bin/install-ter
 - This will allow better portability for other projects that need to install the Terraform CLI.
 
 ### Shebang
-A Shebang (pronounced sha-bang) tells the bash script which program will interpret the script.
+- A Shebang (pronounced sha-bang) tells the bash script which program will interpret the script.
 
-Recommended for bash: '#!/usr/bin/env bash'
+- Recommended for bash: '#!/usr/bin/env bash'
 
-[Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix))
-
-### Execution Considerations
-
-When executing the bash script we can use the './' shorthand notation to execute the bash script;
-
-eg. './bin/install-terraform-cli'
-
-If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
-
-eg. 'source ./bin/install-terraform-cli'
+- [Shebang Wikipedia Reference](https://en.wikipedia.org/wiki/Shebang_(Unix))
 
 ### Linux Permissions Contributions
 
@@ -75,30 +65,41 @@ alternatively,
 chmod 744 ./bin/install-terraform-cli
 ```
 
+### Execution Considerations
+
+When executing the bash script we can use the './' shorthand notation to execute the bash script;
+
+eg. './bin/install-terraform-cli'
+
+If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
+
+eg. 'source ./bin/install-terraform-cli'
+
+
 ### Gitpod LifeCycle (Before, Init, Command)
 
-We need to be careful when using the Init command because it will not rerun if we restart an exisiting workspace
+- We need to be careful when using the Init command because it will not rerun if we restart an exisiting workspace
 
-[Gitpod LifeCycle Reference](https://www.gitpod.io/docs/configure/workspaces/tasks)
+- [Gitpod LifeCycle Reference](https://www.gitpod.io/docs/configure/workspaces/tasks)
 
 ## Working Env Vars
 
-We can list out all Environment variables(Env Vars) using the 'env' command
+- We can list out all Environment variables(Env Vars) using the 'env' command
 
-We can filter specific env vars using grep eg. 'env | grep AWS'
+- We can filter specific env vars using grep eg. 'env | grep AWS'
 
 ### Setting and Unsetting Env Vars 
 
-In the terminal we can set using 'export HELLO='world''
+- In the terminal we can set using 'export HELLO='world''
 
-In the terminal we can unset using 'unset HELLO' 
+- In the terminal we can unset using 'unset HELLO' 
 
-We can set an env var temporarily when just running a command 
+- We can set an env var temporarily when just running a command 
 ```
 HELLO='world' ./bin/print_message
 ```
 
-Within a bash script we can set env without writing export eg
+- Within a bash script we can set env without writing export eg
 ```
 HELLO='world'
 
@@ -107,22 +108,86 @@ echo $HELLO
 
 ### Printing Vars
 
-We can print an env var using echo eg. 'echo $HELLO'
+- We can print an env var using echo eg. 'echo $HELLO'
 
 ### Scoping of Env Vars
 
-When you open up new bash terminals in VSCode it will not be aware of the env vars that you have set in another window.
+- When you open up new bash terminals in VSCode it will not be aware of the env vars that you have set in another window.
 
-If you want Env Vars to persist across all future bash terminals that are open, you need to set env vars in your bash profile. eg. '.bash_profile'
+- If you want Env Vars to persist across all future bash terminals that are open, you need to set env vars in your bash profile. eg. '.bash_profile'
 
 ### Persisting Env Vars in Gitpod
 
-We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
+- We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
 
 ```
 gp env HELLO='world'
 ```
 
-All future workspaces launched will set the env vars for all bash terminals opened in those workspaces.
+- All future workspaces launched will set the env vars for all bash terminals opened in those workspaces.
 
-You can also set env vars in the '.gitpod.yml' file but this can only contain non-sensitive env vars
+- You can also set env vars in the '.gitpod.yml' file but this can only contain non-sensitive env vars.
+
+
+## AWS CLI Installation
+
+AWS CLI is installed for this project via the bash script [./bin/install-aws-cli](./bin/install-aws-cli)
+
+[AWS CLI Install Reference](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+[AWS Environment Variables Reference](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+We can check if our AWS credentials is configured correctly by running the following commands: 
+```
+aws sts get-caller-identity
+```
+
+### AWS Env Vars
+- Create an AWS account
+- Create an IAM User and create access keys for the User
+- Set AWS enviroment variables for bash; insert your access keys and desired region between the quotes
+```
+export AWS_ACCESS_KEY_ID=''
+export AWS_SECRET_ACCESS_KEY=''
+export AWS_DEFAULT_REGION=''
+```
+- Set AWS environment variables for Gitpod; insert your access keys and desired region between the quotes
+```
+gp env AWS_ACCESS_KEY_ID=''
+gp env AWS_SECRET_ACCESS_KEY=''
+gp env AWS_DEFAULT_REGION=''
+```
+
+### Linux Permissions Contributions
+
+In order to make our bash script executable we need to change the linux permission for the file to be executable at user mode;
+
+```
+chmod u+x ./bin/install-aws-cli
+```
+
+alternatively,
+```
+chmod 744 ./bin/install-aws-cli
+```
+
+### Execution Considerations
+
+- When executing the bash script we can use the './' shorthand notation to execute the bash script;
+
+eg. './bin/install-aws-cli'
+
+- If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it 
+
+eg. 'source ./bin/install-aws-cli'
+
+- Check AWS Credentials using the `aws sts get-caller-identity` command; you should get a json payload details return below;
+```json
+{
+    "UserId": "xxxxxxxxxxxxxxxxxxxxx",
+    "Account": "xxxxxxxxxxxx",
+    "Arn": "arn:aws:iam::xxxxxxxxxxxx:user/terraform-beginner-bootcamp"
+}
+```
+
+
