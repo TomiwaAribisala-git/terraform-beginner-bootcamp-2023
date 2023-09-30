@@ -200,6 +200,7 @@ Terraform sources their providers and modules from the Terraform registry which 
 - **Modules** is an IAC structure to make terraform code modular, portable and shareable.
 
 [Terraform Providers](https://registry.terraform.io/browse/providers)
+
 [Terraform Modules](https://registry.terraform.io/browse/modules)
 
 ### Terraform Console
