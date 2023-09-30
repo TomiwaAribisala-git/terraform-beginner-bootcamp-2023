@@ -199,8 +199,8 @@ Terraform sources their providers and modules from the Terraform registry which 
 - **Providers** is an interface to APIs that will allow to create resources in terraform. 
 - **Modules** is an IAC structure to make terraform code modular, portable and shareable.
 
-[Terraform Providers]()
-[Terraform Modules]()
+[Terraform Providers](https://registry.terraform.io/browse/providers)
+[Terraform Modules](https://registry.terraform.io/browse/modules)
 
 ### Terraform Console
 
