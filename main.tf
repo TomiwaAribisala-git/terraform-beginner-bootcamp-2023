@@ -1,4 +1,10 @@
 terraform {
+  cloud {
+    organization = "tomiwa-terraform-bootcamp-2023"
+    workspaces {
+      name = "tomiwa-terra-house-1"
+    }
+  }
   required_providers {
     random = {
       source = "hashicorp/random"
@@ -25,7 +31,7 @@ resource "random_string" "bucket_name" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-test-bucket"
+  bucket = "tomiwa-test-bucket"
 }
 
 output "random_bucket_name_id" {
