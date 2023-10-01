@@ -247,3 +247,71 @@ This file **should not be committed** to your Version Control System(VCS).
 ### Terraform Directory
 
 `.terraform` directory contains binaries of terraform providers.
+
+## Terraform Cloud 
+Create a free [Terraform Cloud Account](https://app.terraform.io/)create an organization and a workspace.
+
+### Setup Terraform Cloud Login and Workspace for your Terraform Configuration 
+- Execute `terraform login` command via the CLI, you will be prompted with an approval, type yes, then you wll be presented with a wiswig view, exit the view with q button and press Enter.
+
+- You will then be prompted for a Token to set up your Terraform Cloud Login. 
+
+- Create a token in your Terraform Cloud account user settings and paste your token, notice that the token won't be viewable, so just paste the token once and click Enter.
+
+- Make sure to input the Terraform Cloud organization/workspace details in your terraform config file--main.tf, example below:
+```
+terraform {
+   cloud {
+    organization = "tomiwa-terraform-bootcamp-2023"
+    workspaces {
+      name = "tomiwa-terra-house-1"
+    }
+  }
+  required_providers {
+    random = {
+      source = "hashicorp/random"
+      version = "3.5.1"
+    }
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.19.0"
+    }
+  }
+}
+```
+
+- Initialize your working directory and remove any local state file
+The `terraform init` command moves your infrastructure state file to Terraform Cloud.
+```
+terraform init
+```
+
+Remove your local state file
+```
+rm .terraform/terraform.tfstate
+```
+
+- Authenticate your Terraform Cloud account workspace with your AWS credentials
+Click on your workspace in your Terraform Cloud account, click on Variables, scroll to Workspace Variables, add variables across your `AWS_ACCESS_KEY`, `AWS_SECRET_KEY_ID` and `AWS_DEFAULT_REGION`as environmental variables. Make sure to mark these variables as sensitive.
+
+- Execute Terraform Commands.
+
+Terraform Plan:
+```
+terraform plan 
+```
+
+Terraform Apply: 
+```
+terraform apply
+```
+OR
+```
+terraform apply --auto-approve
+```
+
+Terraform Destroy:
+```
+terraform destory
+``` 
+Terraform is now storing your information state file in Terraform Cloud. Remote State storage make collaboration easier and keeps secrets and sensitive information and state files across your local machine. Terraform commands via CLI runs are reflected in the Terraform Cloud workspace. 
