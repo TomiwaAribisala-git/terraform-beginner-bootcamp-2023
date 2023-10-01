@@ -249,7 +249,7 @@ This file **should not be committed** to your Version Control System(VCS).
 `.terraform` directory contains binaries of terraform providers.
 
 ## Terraform Cloud 
-Create a free [Terraform Cloud Account](https://app.terraform.io/)create an organization and a workspace.
+Create a free [Terraform Cloud Account](https://app.terraform.io/), create an organization and a workspace.
 
 ### Setup Terraform Cloud Login and Workspace for your Terraform Configuration 
 - Execute `terraform login` command via the CLI, you will be prompted with an approval, type yes, then you wll be presented with a wiswig view, exit the view with q button and press Enter.
@@ -281,6 +281,7 @@ terraform {
 ```
 
 - Initialize your working directory and remove any local state file
+
 The `terraform init` command moves your infrastructure state file to Terraform Cloud.
 ```
 terraform init
@@ -291,7 +292,8 @@ Remove your local state file
 rm .terraform/terraform.tfstate
 ```
 
-- Authenticate your Terraform Cloud account workspace with your AWS credentials
+- Authenticate your Terraform Cloud account workspace with your AWS credentials.
+
 Click on your workspace in your Terraform Cloud account, click on Variables, scroll to Workspace Variables, add variables across your `AWS_ACCESS_KEY`, `AWS_SECRET_KEY_ID` and `AWS_DEFAULT_REGION`as environmental variables. Make sure to mark these variables as sensitive.
 
 - Execute Terraform Commands.
