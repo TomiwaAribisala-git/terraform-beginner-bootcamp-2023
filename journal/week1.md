@@ -15,3 +15,17 @@ Our root module structure is as follows:
 ## Loading Terraform Input Variables
 - Prefarably set input variables values in the terraform.tfvars file, this is the default file to load terraform variables definitions in bulk.
 - Furthur Reading: [Terraform Input Variales](https://developer.hashicorp.com/terraform/language/values/variables)
+
+## Dealing With Configuration Drift
+
+### What happens if one lose the statefile? 
+If you lose your statefile, you most likely have to tear down your cloud infrastructure manually
+
+You can use `terraform import` but it won't cover all your cloud resources; You need to check the terraform providers documentation for which resources support `terraform import` 
+
+### Fix Missing Resources with Terraform Import
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+
+### Fix Manual Configuration
+- If someone goes and delete/modify cloud resources manually via the console.
+- Run Terraform Plan with the attempt to put our infrastructure back into the expected state fixing Configuration Drift.
