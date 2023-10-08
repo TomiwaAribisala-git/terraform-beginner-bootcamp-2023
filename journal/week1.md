@@ -19,9 +19,11 @@ Our root module structure is as follows:
 ## Dealing With Configuration Drift
 
 ### What happens if one lose the statefile? 
-If you lose your statefile, you most likely have to tear down your cloud infrastructure manually
+If you lose your statefile, you most likely have to tear down your cloud infrastructure manually.
 
-You can use `terraform import` but it won't cover all your cloud resources; You need to check the terraform providers documentation for which resources support `terraform import` 
+You can use `terraform import` but it won't cover all your cloud resources; You need to check the terraform providers documentation for which resources support `terraform import`. 
+
+You can also use `terraform apply -refresh-only` to adjust your state file to the clickops done manually via the console.
 
 ### Fix Missing Resources with Terraform Import
 [Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
@@ -29,3 +31,19 @@ You can use `terraform import` but it won't cover all your cloud resources; You 
 ### Fix Manual Configuration
 - If someone goes and delete/modify cloud resources manually via the console.
 - Run Terraform Plan with the attempt to put our infrastructure back into the expected state fixing Configuration Drift.
+
+
+## Terraform Modules
+
+### Terraform Module Structure
+It is recommended to place modules in a `modules` directory when locally developing modules but you can name it whatever you like.
+
+### Module Sources 
+Using the source we can import the module from various sources eg. Locally, Github, Terraform Regristry etc
+```
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
+[Terrform Modules Sources Reference](https://developer.hashicorp.com/terraform/language/modules/sources)
+

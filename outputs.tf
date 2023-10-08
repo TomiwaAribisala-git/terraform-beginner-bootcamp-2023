@@ -1,7 +1,3 @@
-output "random_bucket_name_id" {
-  value = random_string.bucket_name.id
-}
-
 output "aws_s3_bucket_test_bucket" {
-  value = aws_s3_bucket.test-bucket.id
+  value = module.terrahouse_aws.s3_bucket_name
 }

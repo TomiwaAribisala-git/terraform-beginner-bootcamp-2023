@@ -1,8 +1,22 @@
-resource "random_string" "bucket_name" {
-  length           = 16
-  special          = false
+terraform {
+  cloud {
+    organization = "tomiwa-terraform-bootcamp-2023"
+    workspaces {
+      name = "tomiwa-terra-house-1"
+    }
+  }
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.19.0"
+    }
+  }
 }
 
-resource "aws_s3_bucket" "test-bucket" {
-  bucket = var.bucket_name
+provider "aws" {
+  # Configuration options
+}
+
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
 }
