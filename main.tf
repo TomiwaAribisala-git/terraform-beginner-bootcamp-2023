@@ -3,6 +3,6 @@ resource "random_string" "bucket_name" {
   special          = false
 }
 
-resource "aws_s3_bucket" "tomiwa-test-bucket" {
+resource "aws_s3_bucket" "test-bucket" {
   bucket = var.bucket_name
 }

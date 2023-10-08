@@ -3,5 +3,5 @@ output "random_bucket_name_id" {
 }
 
 output "aws_s3_bucket_test_bucket" {
-  value = aws_s3_bucket.tomiwa-test-bucket.id
+  value = aws_s3_bucket.test-bucket.id
 }
