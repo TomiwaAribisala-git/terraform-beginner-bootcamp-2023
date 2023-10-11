@@ -47,3 +47,14 @@ module "terrahouse_aws" {
 ```
 [Terrform Modules Sources Reference](https://developer.hashicorp.com/terraform/language/modules/sources)
 
+## AWS S3 Static Website Hosting
+
+### Enable Static Website Hosting for S3 Bucket
+- Enable Static Website Hosting for s3 Bucket using [Terraform Regsitry Doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration).
+- Upload index.html and error.html in S3 Bucket using [Terraform Regristry Doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object).
+
+### Working with Files in Terraform 
+In terraform there is a special variable called `path` that allows us to reference local paths:
+- path.module: get the path for the current module
+- path.root: get the path of the root module
+- [Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references)
