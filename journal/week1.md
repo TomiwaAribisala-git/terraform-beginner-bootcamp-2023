@@ -72,3 +72,13 @@ In terraform there is a special variable called `path` that allows us to referen
 ### AWS S3 Bucket Policy
 - Attach a policy to an S3 bucket to allow CloudFront to access objects in the bucket.
 - [Terraform Registry S3 Bucket Policy Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy). 
+
+## Content Version and Terraform Data 
+
+### Terraform Resource LifeCycle
+- Lifecycle management was used to ignore changes to to S3 objects(index.html and error.html) resource attributes. 
+- [Terraform Resource Lifecycle Documentation](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle).
+
+### Terraform Data Resource
+- The terraform_data resource is useful for storing values which need to follow a manage resource lifecycle, for this project--the terraform_data resource triggers the S3 objects(index.html and error.html) to be updated only when the `var.content_version` is incremented, but this does invalidate the cache which i will cover in another step in this journal.
+- [Terraform Data Resource Documentation](https://developer.hashicorp.com/terraform/language/resources/terraform-data).
