@@ -20,6 +20,10 @@ resource "aws_s3_object" "index_html" {
   source = "${path.root}/public/index.html"
   content_type = "text/html"
   etag = filemd5("${path.root}/public/index.html")
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version]
+    ignore_changes = [etag]
+  }
 }
 
 resource "aws_s3_object" "error_html" {
@@ -28,6 +32,10 @@ resource "aws_s3_object" "error_html" {
   source = "${path.root}/public/error.html"
   content_type = "text/html"
   etag = filemd5("${path.root}/public/error.html")
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version]
+    ignore_changes = [etag]
+  }
 }
 
 data "aws_iam_policy_document" "allow_access_from_cloudfront" {
@@ -52,4 +60,8 @@ data "aws_iam_policy_document" "allow_access_from_cloudfront" {
 resource "aws_s3_bucket_policy" "website-bucket-policy" {
   bucket = aws_s3_bucket.website-bucket.id
   policy = data.aws_iam_policy_document.allow_access_from_cloudfront.json
+}
+
+resource "terraform_data" "content_version" {
+  input = var.content_version
 }
