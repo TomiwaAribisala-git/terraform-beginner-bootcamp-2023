@@ -82,3 +82,14 @@ In terraform there is a special variable called `path` that allows us to referen
 ### Terraform Data Resource
 - The terraform_data resource is useful for storing values which need to follow a manage resource lifecycle, for this project--the terraform_data resource triggers the S3 objects(index.html and error.html) to be updated only when the `var.content_version` is incremented, but this does invalidate the cache which i will cover in another step in this journal.
 - [Terraform Data Resource Documentation](https://developer.hashicorp.com/terraform/language/resources/terraform-data).
+
+## Cache Invalidation
+
+### Invalidate Cache for updated S3 Objects content version
+- Implemented Cache invalidation for updated S3 objects using a terraform_data resource; S3 objects are updated, content version is incremented, both actions trigger a cache invalidation.
+- [terraform_data resource](https://developer.hashicorp.com/terraform/language/resources/terraform-data).
+
+### Provisioners
+- Provisioners in Terraform are used to execute actions on resources after they are created or updated.
+- [Local-Exec Provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec): This provisioner runs commands locally on the machine where Terraform is executed. It's useful for tasks like running shell commands or scripts on the local machine.
+- [Remote-Exec Provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec): The remote-exec provisioner allows you to run commands on a remote resource via SSH or WinRM. This is typically used for provisioning resources that are not local, such as virtual machines.

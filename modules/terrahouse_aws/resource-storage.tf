@@ -33,7 +33,7 @@ resource "aws_s3_object" "error_html" {
   content_type = "text/html"
   etag = filemd5("${path.root}/public/error.html")
   lifecycle {
-    replace_triggered_by = [terraform_data.content_version]
+    replace_triggered_by = [terraform_data.content_version.output]
     ignore_changes = [etag]
   }
 }
@@ -41,8 +41,8 @@ resource "aws_s3_object" "error_html" {
 data "aws_iam_policy_document" "allow_access_from_cloudfront" {
   statement {
     principals {
-      type = "cloudfront.amazonaws.com"
-      identifiers = [aws_cloudfront_distribution.s3_distribution.id]
+      type = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
     }
 
     actions = [
