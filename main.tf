@@ -21,4 +21,5 @@ module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"
   bucket_name = var.bucket_name
   content_version = var.content_version
+  assets_path = var.assets_path
 }

@@ -93,3 +93,20 @@ In terraform there is a special variable called `path` that allows us to referen
 - Provisioners in Terraform are used to execute actions on resources after they are created or updated.
 - [Local-Exec Provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec): This provisioner runs commands locally on the machine where Terraform is executed. It's useful for tasks like running shell commands or scripts on the local machine.
 - [Remote-Exec Provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec): The remote-exec provisioner allows you to run commands on a remote resource via SSH or WinRM. This is typically used for provisioning resources that are not local, such as virtual machines.
+
+## Assets Upload and For_Each Concept
+
+### For_Each Expressions
+- For_Each allows us to iterate/enumerate over complex data types, this is mostly useful when you are creating multiples of a cloud resource (type/types) and you want to reduce the amount of repititive terraform code.
+```
+resource "azurerm_resource_group" "rg" {
+  for_each = {
+    a_group = "eastus"
+    another_group = "westus2"
+  }
+  name     = each.key
+  location = each.value
+}
+
+```
+- [For_Each Documentation](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each).
