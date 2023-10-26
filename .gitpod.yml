@@ -1,4 +1,9 @@
 tasks:
+  - name: sinatra
+    before: | 
+      source .bin/terratowns/
+      bundle install
+      bundle exec ruby server.rb 
   - name: terraform
     before: |
      source ./bin/install-terraform-cli
