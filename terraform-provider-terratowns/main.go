@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
 	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -54,10 +55,10 @@ func Provider() *schema.Provider {
 				Description: "Bearer token for authorization",
 			},
 			"user_uuid": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "UUID for configuration",
-				//ValidateFunc: validateUUID,
+				Type:         schema.TypeString,
+				Required:     true,
+				Description:  "UUID for configuration",
+				ValidateFunc: validateUUID,
 			},
 		},
 	}
