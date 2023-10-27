@@ -54,10 +54,10 @@ func Provider() *schema.Provider {
 				Description: "Bearer token for authorization",
 			},
 			"user_uuid": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "UUID for configuration",
-				//ValidateFunc: validateUUID,
+				Type:         schema.TypeString,
+				Required:     true,
+				Description:  "UUID for configuration",
+				ValidateFunc: validateUUID,
 			},
 		},
 	}

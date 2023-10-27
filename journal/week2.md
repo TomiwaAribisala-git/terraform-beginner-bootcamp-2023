@@ -37,4 +37,36 @@ gem 'activerecord'
 
 ## Terraform Terratowns Provider and Resource Skeleton
 
-### Lool, don't know what to say man!, golang code almost ruined me, will catch up still.
+### Set Terratowns Token Env Var and Exampro UUID Env Var
+- Replace the token with your actual token.
+```
+export TF_VAR_terratowns_access_token="token"
+```
+```
+gp env export TF_VAR_terratowns_access_token="token"
+```
+- Replace the UUID with your Exampro Account UUID.
+```
+export TF_VAR_teacherseat_uuid="UUID"
+```
+```
+gp env export TF_VAR_teacherseat_uuid="UUID"
+```
+- Set Custom Terraform Provider Endpoint
+```
+var.terratowns_endpoint
+```
+- Execute Custom Terraform Provider Script
+```
+./bin/build_provider
+```
+- Execute Terraform Commands
+```
+terraform init
+```
+```
+terraform plan
+```
+```
+terraform apply --auto-approve
+```
