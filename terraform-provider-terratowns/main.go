@@ -10,8 +10,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
-	//"github.com/google/uuid"
+	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
@@ -66,15 +65,15 @@ func Provider() *schema.Provider {
 	return p
 }
 
-//func validateUUID(v interface{}, k string) (ws []string, errors []error) {
-//	log.Print("validateUUID:start")
-//	value := v.(string)
-//	if _, err := uuid.Parse(value); err != nil {
-//		errors = append(errors, fmt.Errorf("invalid UUID format"))
-//	}
-//	log.Print("validateUUID:end")
-//	return
-//}
+func validateUUID(v interface{}, k string) (ws []string, errors []error) {
+	log.Print("validateUUID:start")
+	value := v.(string)
+	if _, err := uuid.Parse(value); err != nil {
+		errors = append(errors, fmt.Errorf("invalid UUID format"))
+	}
+	log.Print("validateUUID:end")
+	return
+}
 
 func providerConfigure(p *schema.Provider) schema.ConfigureContextFunc {
 	return func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {

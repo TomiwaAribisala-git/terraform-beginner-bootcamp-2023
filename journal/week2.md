@@ -35,6 +35,6 @@ gem 'activerecord'
 - [Sinatra Reference](https://sinatrarb.com/).
 
 
-## Terraform Terratowns Provider
+## Terraform Terratowns Provider and Resource Skeleton
 
 ### Lool, don't know what to say man!, golang code almost ruined me, will catch up still.
